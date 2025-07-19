@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.mafuyu404.oneenoughhand.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "oneenoughhand.refmap.json",
+  "mixins": [
+    "AbstractContainerMenuMixin",
+    "InventoryMixin",
+    "ServerPlayerMixin",
+    "SlotMixin"
+  ],
+  "client": [
+    "KeyMappingMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
