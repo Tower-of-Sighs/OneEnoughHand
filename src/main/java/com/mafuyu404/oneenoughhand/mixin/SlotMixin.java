@@ -17,7 +17,7 @@ public abstract class SlotMixin {
     @Inject(method = "isActive", at = @At("HEAD"), cancellable = true)
     private void qqq(CallbackInfoReturnable<Boolean> cir) {
         if (!OEHUtil.isOffhandDisabled(Minecraft.getInstance().player)) return;
-        if (Minecraft.getInstance().screen instanceof InventoryScreen screen) {
+        if (Minecraft.getInstance().screen instanceof InventoryScreen) {
             if (this.index == 45) {
                 cir.setReturnValue(false);
             }
