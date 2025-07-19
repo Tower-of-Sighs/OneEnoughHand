@@ -1,7 +1,7 @@
 package com.mafuyu404.oneenoughhand;
 
+import com.mafuyu404.oneenoughhand.data.OffhandAttachments;
 import com.mafuyu404.oneenoughhand.init.OffhandCommands;
-import com.mafuyu404.oneenoughhand.network.NetworkHandler;
 import net.fabricmc.api.ModInitializer;
 
 public class OneEnoughHand implements ModInitializer {
@@ -9,8 +9,7 @@ public class OneEnoughHand implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        OffhandAttachments.register();
         OffhandCommands.register();
-
-        NetworkHandler.register();
     }
 }
