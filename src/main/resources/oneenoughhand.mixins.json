@@ -6,7 +6,6 @@
   "refmap": "oneenoughhand.refmap.json",
   "mixins": [
     "AbstractContainerMenuMixin",
-    "InventoryMixin",
     "ServerPlayerMixin",
     "SlotMixin"
   ],

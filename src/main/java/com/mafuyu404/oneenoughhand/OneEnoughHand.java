@@ -1,5 +1,6 @@
 package com.mafuyu404.oneenoughhand;
 
+import com.mafuyu404.oneenoughhand.init.OffhandCommands;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,6 +37,11 @@ public class OneEnoughHand {
     public static final String MODID = "oneenoughhand";
 
     public OneEnoughHand() {
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 
+    @SubscribeEvent
+    public void onRegisterCommands(RegisterCommandsEvent event) {
+        OffhandCommands.register(event.getDispatcher());
     }
 }
