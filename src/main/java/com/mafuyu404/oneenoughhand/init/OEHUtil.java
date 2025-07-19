@@ -2,7 +2,6 @@ package com.mafuyu404.oneenoughhand.init;
 
 import com.mafuyu404.oneenoughhand.network.NetworkHandler;
 import com.mafuyu404.oneenoughhand.network.PlayerOffhandStatePacket;
-import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
