@@ -6,11 +6,11 @@
   "refmap": "oneenoughhand.refmap.json",
   "mixins": [
     "AbstractContainerMenuMixin",
-    "ServerPlayerMixin",
-    "SlotMixin"
+    "ServerPlayerMixin"
   ],
   "client": [
-    "KeyMappingMixin"
+    "KeyMappingMixin",
+    "SlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1
