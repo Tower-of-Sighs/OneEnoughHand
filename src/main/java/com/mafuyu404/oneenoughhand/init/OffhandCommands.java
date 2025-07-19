@@ -20,19 +20,19 @@ public class OffhandCommands {
 
         offhandCommand.then(Commands.literal("disable")
                 .then(Commands.argument("targets", EntityArgument.players())
-                        .executes(ctx -> setOffhandState(ctx, Utils::disableOffhand))));
+                        .executes(ctx -> setOffhandState(ctx, OEHUtil::disableOffhand))));
 
         offhandCommand.then(Commands.literal("enable")
                 .then(Commands.argument("targets", EntityArgument.players())
-                        .executes(ctx -> setOffhandState(ctx, Utils::enableOffhand))));
+                        .executes(ctx -> setOffhandState(ctx, OEHUtil::enableOffhand))));
 
         offhandCommand.then(Commands.literal("lock")
                 .then(Commands.argument("targets", EntityArgument.players())
-                        .executes(ctx -> setOffhandState(ctx, Utils::lockOffhand))));
+                        .executes(ctx -> setOffhandState(ctx, OEHUtil::lockOffhand))));
 
         offhandCommand.then(Commands.literal("unlock")
                 .then(Commands.argument("targets", EntityArgument.players())
-                        .executes(ctx -> setOffhandState(ctx, Utils::unlockOffhand))));
+                        .executes(ctx -> setOffhandState(ctx, OEHUtil::unlockOffhand))));
 
         dispatcher.register(offhandCommand);
     }

@@ -1,6 +1,7 @@
 package com.mafuyu404.oneenoughhand;
 
 import com.mafuyu404.oneenoughhand.init.OffhandCommands;
+import com.mafuyu404.oneenoughhand.network.NetworkHandler;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -38,6 +39,7 @@ public class OneEnoughHand {
 
     public OneEnoughHand() {
         MinecraftForge.EVENT_BUS.register(this);
+        NetworkHandler.register();
     }
 
     @SubscribeEvent

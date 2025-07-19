@@ -1,6 +1,6 @@
 package com.mafuyu404.oneenoughhand.mixin;
 
-import com.mafuyu404.oneenoughhand.init.Utils;
+import com.mafuyu404.oneenoughhand.init.OEHUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.world.inventory.Slot;
@@ -16,7 +16,7 @@ public abstract class SlotMixin {
 
     @Inject(method = "isActive", at = @At("HEAD"), cancellable = true)
     private void qqq(CallbackInfoReturnable<Boolean> cir) {
-        if (!Utils.isOffhandDisabled(Minecraft.getInstance().player)) return;
+        if (!OEHUtil.isOffhandDisabled(Minecraft.getInstance().player)) return;
         if (Minecraft.getInstance().screen instanceof InventoryScreen screen) {
             if (this.index == 45) {
                 cir.setReturnValue(false);

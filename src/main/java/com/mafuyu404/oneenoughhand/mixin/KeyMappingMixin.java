@@ -1,6 +1,6 @@
 package com.mafuyu404.oneenoughhand.mixin;
 
-import com.mafuyu404.oneenoughhand.init.Utils;
+import com.mafuyu404.oneenoughhand.init.OEHUtil;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Final;
@@ -16,7 +16,7 @@ public class KeyMappingMixin {
 
     @Inject(method = "consumeClick", at = @At("HEAD"), cancellable = true)
     private void qqq(CallbackInfoReturnable<Boolean> cir) {
-        if (!Utils.isOffhandDisabled(Minecraft.getInstance().player)) return;
+        if (!OEHUtil.isOffhandDisabled(Minecraft.getInstance().player)) return;
         if (this.name.equals("key.swapOffhand")) {
             cir.setReturnValue(false);
         }
