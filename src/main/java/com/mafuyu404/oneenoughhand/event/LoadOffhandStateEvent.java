@@ -2,8 +2,6 @@ package com.mafuyu404.oneenoughhand.event;
 
 import com.mafuyu404.oneenoughhand.OneEnoughHand;
 import com.mafuyu404.oneenoughhand.init.OEHUtil;
-import com.mafuyu404.oneenoughhand.network.NetworkHandler;
-import com.mafuyu404.oneenoughhand.network.PlayerOffhandStatePacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
@@ -14,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = OneEnoughHand.MODID)
 public class LoadOffhandStateEvent {
     @SubscribeEvent
-    public static void load(EntityJoinLevelEvent event) {
+    public static void sync(EntityJoinLevelEvent event) {
         if (event.getEntity() instanceof Player player) {
             if (player.isLocalPlayer()) return;
             OEHUtil.syncOffhandState((ServerPlayer) player);
@@ -26,4 +24,10 @@ public class LoadOffhandStateEvent {
         OEHUtil.updateOffhandState(event.getEntity(), OEHUtil.DISABLE_KEY, OEHUtil.isOffhandDisabled(event.getOriginal()));
         OEHUtil.updateOffhandState(event.getEntity(), OEHUtil.LOCK_KEY, OEHUtil.isOffhandLocked(event.getOriginal()));
     }
+
+//    @SubscribeEvent
+//    public static void tick(TickEvent.PlayerTickEvent event) {
+//        if (event.player.isLocalPlayer()) return;
+//        System.out.print(OEHUtil.isOffhandDisabled(event.player)+"\n");
+//    }
 }

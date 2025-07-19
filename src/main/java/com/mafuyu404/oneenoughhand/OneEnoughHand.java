@@ -1,10 +1,15 @@
 package com.mafuyu404.oneenoughhand;
 
+import com.mafuyu404.oneenoughhand.api.IOffhandState;
 import com.mafuyu404.oneenoughhand.init.OffhandCommands;
+import com.mafuyu404.oneenoughhand.init.OffhandStateProvider;
 import com.mafuyu404.oneenoughhand.network.NetworkHandler;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -16,6 +21,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -45,5 +52,21 @@ public class OneEnoughHand {
     @SubscribeEvent
     public void onRegisterCommands(RegisterCommandsEvent event) {
         OffhandCommands.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    public void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
+        event.register(IOffhandState.class);
+    }
+
+    @SubscribeEvent
+    public void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
+        if (event.getObject() instanceof Player) {
+            OffhandStateProvider provider = new OffhandStateProvider();
+            event.addCapability(
+                    new ResourceLocation(MODID, "offhand_state"),
+                    provider
+            );
+        }
     }
 }
