@@ -12,7 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = KeyMapping.class)
 public class KeyMappingMixin {
-    @Shadow @Final private String name;
+    @Shadow
+    @Final
+    private String name;
 
     @Inject(method = "consumeClick", at = @At("HEAD"), cancellable = true)
     private void qqq(CallbackInfoReturnable<Boolean> cir) {

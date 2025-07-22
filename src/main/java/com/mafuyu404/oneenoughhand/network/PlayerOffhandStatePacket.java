@@ -28,12 +28,4 @@ public class PlayerOffhandStatePacket {
     public static void handle(PlayerOffhandStatePacket packet) {
         ClientUtil.updateOffhandState(packet.key, packet.value);
     }
-
-    public String getKey() {
-        return key;
-    }
-
-    public boolean getValue() {
-        return value;
-    }
 }

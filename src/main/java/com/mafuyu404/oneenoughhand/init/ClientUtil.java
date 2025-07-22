@@ -2,9 +2,9 @@ package com.mafuyu404.oneenoughhand.init;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class ClientUtil {
     private static final Map<String, Boolean> clientOffhandStates = new HashMap<>();

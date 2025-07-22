@@ -16,9 +16,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractContainerMenu.class)
 @Implements(@Interface(iface = IAbstractContainerMenu.class, prefix = "lazy$"))
 public abstract class AbstractContainerMenuMixin implements IAbstractContainerMenu {
-    @Shadow @Final public int containerId;
+    @Shadow
+    @Final
+    public int containerId;
 
-    @Shadow public abstract Slot getSlot(int p_38854_);
+    @Shadow
+    public abstract Slot getSlot(int p_38854_);
 
     @Unique
     private ServerPlayer player;
