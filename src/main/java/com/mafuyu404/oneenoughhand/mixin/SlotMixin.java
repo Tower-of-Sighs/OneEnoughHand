@@ -12,7 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = Slot.class)
 public abstract class SlotMixin {
-    @Shadow public int index;
+    @Shadow
+    public int index;
 
     @Inject(method = "isActive", at = @At("HEAD"), cancellable = true)
     private void qqq(CallbackInfoReturnable<Boolean> cir) {
