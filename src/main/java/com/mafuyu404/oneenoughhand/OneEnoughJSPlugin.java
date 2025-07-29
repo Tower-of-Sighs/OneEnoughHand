@@ -8,6 +8,6 @@ public class OneEnoughJSPlugin implements KubeJSPlugin {
 
     @Override
     public void registerBindings(BindingRegistry bindings) {
-        bindings.add("ChatBoxUtil", OEHUtil.class);
+        bindings.add("OEHUtil", OEHUtil.class);
     }
 }
