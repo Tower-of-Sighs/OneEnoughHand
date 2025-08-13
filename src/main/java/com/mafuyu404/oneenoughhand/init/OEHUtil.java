@@ -1,7 +1,6 @@
 package com.mafuyu404.oneenoughhand.init;
 
 import com.mafuyu404.oneenoughhand.data.OffhandDataManager;
-import com.mafuyu404.oneenoughhand.network.NetworkHandler;
 import com.mafuyu404.oneenoughhand.network.PlayerOffhandStatePacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -28,7 +27,8 @@ public class OEHUtil {
             OffhandDataManager dataManager = OffhandDataManager.get(serverPlayer.getServer());
             dataManager.setOffhandState(player.getUUID(), key, value);
 
-            NetworkHandler.sendToClient(serverPlayer, new PlayerOffhandStatePacket(key, value));
+            PlayerOffhandStatePacket packet = new PlayerOffhandStatePacket(key, value);
+            packet.sendTo(serverPlayer);
         }
     }
 

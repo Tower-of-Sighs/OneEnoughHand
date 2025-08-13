@@ -1,12 +1,14 @@
 package com.mafuyu404.oneenoughhand.network;
 
-import com.mafuyu404.oneenoughhand.OneEnoughHand;
+import com.mafuyu404.oelib.api.net.INetworkContext;
+import com.mafuyu404.oelib.api.net.NetworkPacket;
+import com.mafuyu404.oelib.api.net.Side;
+import com.mafuyu404.oelib.api.net.SimplePacket;
 import com.mafuyu404.oneenoughhand.init.ClientUtil;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
 
-public class PlayerOffhandStatePacket {
-    public static final ResourceLocation ID = new ResourceLocation(OneEnoughHand.MODID, "player_offhand");
+@NetworkPacket(side = Side.CLIENT)
+public class PlayerOffhandStatePacket extends SimplePacket<PlayerOffhandStatePacket> {
 
     private final String key;
     private final Boolean value;
@@ -16,16 +18,18 @@ public class PlayerOffhandStatePacket {
         this.value = value;
     }
 
-    public void write(FriendlyByteBuf buf) {
+    @Override
+    public void encode(FriendlyByteBuf buf) {
         buf.writeUtf(key);
         buf.writeBoolean(value);
     }
 
-    public static PlayerOffhandStatePacket read(FriendlyByteBuf buf) {
+    public static PlayerOffhandStatePacket decode(FriendlyByteBuf buf) {
         return new PlayerOffhandStatePacket(buf.readUtf(), buf.readBoolean());
     }
 
-    public static void handle(PlayerOffhandStatePacket packet) {
-        ClientUtil.updateOffhandState(packet.key, packet.value);
+    @Override
+    public void handleClient(INetworkContext context) {
+        ClientUtil.updateOffhandState(key, value);
     }
 }

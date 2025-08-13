@@ -26,6 +26,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modApi(files("libs/architectury-9.2.14-fabric.jar"))
+    modApi(files("libs/OELib-fabric-0.0.3.jar"))
 }
 
 processResources {

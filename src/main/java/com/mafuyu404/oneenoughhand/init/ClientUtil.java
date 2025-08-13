@@ -16,7 +16,6 @@ public class ClientUtil {
         String playerKey = player.getUUID() + "_" + key;
         clientOffhandStates.put(playerKey, value);
     }
-
     public static boolean getOffhandState(String key) {
         Player player = Minecraft.getInstance().player;
         if (player == null) return false;
